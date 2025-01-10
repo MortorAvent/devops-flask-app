@@ -30,8 +30,14 @@ jobs:
     - name: Build Docker image
       run: docker build -t devops-flask-app .
 
-    - name: Scan Docker image with Trivy
+    - name: Zainstaluj Trivy
       run: |
-        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh |
-        sh./trivy image --exit-code 1 devops-flask-app
+        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
+        # Sprawdzamy wersję
+        ./trivy --version
+    
+    - name: Scan Image
+      run: |
+        # Skanujemy zbudowany wcześniej obraz 'myapp'
+        ./trivy image --exit-code 1 myapp
     
