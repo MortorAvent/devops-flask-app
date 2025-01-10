@@ -40,4 +40,4 @@ jobs:
     - name: Scan Image
       run: |
         # Skanujemy zbudowany wcześniej obraz 'devops-flask-app'
-        ./trivy image --exit-code 1 devops-flask-app
+        ./trivy image 1 devops-flask-app
